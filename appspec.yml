@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+
+# Define the hooks
+hooks:
+  BeforeInstall:
+    - location: scripts/install_and_manage_httpd.sh
+      timeout: 300
+      runas: root
+      arguments:
+        - stop
+
+  AfterInstall:
+    - location: scripts/install_and_manage_httpd.sh
+      timeout: 300
+      runas: root
+      arguments:
+        - start
